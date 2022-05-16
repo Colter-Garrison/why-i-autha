@@ -14,7 +14,7 @@ const signUpPassword = document.getElementById('sign-up-password');
 signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(signUpForm);
-    console.log({ signUpEmail: data.get('email'), signUpPassword: data.get('password') });
+    console.log({ email: data.get('email'), password: data.get('password') });
     const user = await signupUser(data.get('email'), data.get('password'));
     if (user) {
         location.replace('/other-page');
