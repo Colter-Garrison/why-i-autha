@@ -18,7 +18,12 @@ export async function signupUser(email, password) {
 }
 
 export async function signInUser(email, password) {
-
+    const signInResponse = await client.auth.signIn({ email, password });
+    if (signInResponse.user) {
+        location.replace('./other-page');
+    } else {
+        console.error(signInResponse.error);
+    }
 }
 
 export async function checkAuth() {
@@ -26,7 +31,11 @@ export async function checkAuth() {
     if (!user) location.replace('/');
 }
 
-export async function redirectIfLoggedIn() {}
+export async function redirectIfLoggedIn() {
+    if (getUser()) {
+        location.replace('./other-page');
+    }
+}
 
 export async function logout() {
     await client.auth.signOut();
