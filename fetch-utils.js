@@ -14,6 +14,7 @@ export async function signupUser(email, password) {
         return response.user;
     } else {
         console.error(response.error);
+        alert('User already registered');
     }
 }
 
@@ -23,6 +24,7 @@ export async function signInUser(email, password) {
         location.replace('./other-page');
     } else {
         console.error(signInResponse.error);
+        alert('Invalid login credentials');
     }
 }
 
